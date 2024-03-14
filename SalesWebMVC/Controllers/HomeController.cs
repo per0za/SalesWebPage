@@ -20,6 +20,7 @@ namespace SalesWebMVC.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Message"] = "Sales Web App";
             return View();
         }
 
