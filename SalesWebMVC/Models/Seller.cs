@@ -29,11 +29,6 @@ namespace SalesWebMVC.Models
             Sales.Add(sr);
         }
 
-        public void RemoveSalse(SalesRecord sr)
-        {
-            Sales.Remove(sr);
-        }
-
         public double TotalSales(DateTime initial, DateTime final)
         {
             return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
