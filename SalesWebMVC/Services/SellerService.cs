@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using SalesWebMVC.Data;
 using SalesWebMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Services
 {
@@ -29,7 +30,7 @@ namespace SalesWebMVC.Services
 
         public Seller FindById(int id)
         {
-            return _context.Sellers.FirstOrDefault(s => s.Id == id);
+            return _context.Sellers.Include(obj => obj.Department).FirstOrDefault(s => s.Id == id);
         }
 
         public void Remove(int id)
