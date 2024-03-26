@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using SalesWebMVC.Data;
 using SalesWebMVC.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+
 namespace SalesWebMVC
 {
     public class Program
@@ -19,10 +22,20 @@ namespace SalesWebMVC
             builder.Services.AddScoped<SellerService>();
             builder.Services.AddScoped<DepartmentService>();
 
+            var enUS = new CultureInfo("en-US");
+            var localizationOption = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = new List<CultureInfo> { enUS },
+                SupportedUICultures = new List<CultureInfo> { enUS }
+            };
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            app.UseRequestLocalization(localizationOption);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
