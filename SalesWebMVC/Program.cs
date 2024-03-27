@@ -22,12 +22,12 @@ namespace SalesWebMVC
             builder.Services.AddScoped<SellerService>();
             builder.Services.AddScoped<DepartmentService>();
 
-            var enUS = new CultureInfo("en-US");
+            var ptBR = new CultureInfo("pt-BR");
             var localizationOption = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("en-US"),
-                SupportedCultures = new List<CultureInfo> { enUS },
-                SupportedUICultures = new List<CultureInfo> { enUS }
+                DefaultRequestCulture = new RequestCulture("pt-BR"),
+                SupportedCultures = new List<CultureInfo> { ptBR },
+                SupportedUICultures = new List<CultureInfo> { ptBR }
             };
 
             // Add services to the container.
