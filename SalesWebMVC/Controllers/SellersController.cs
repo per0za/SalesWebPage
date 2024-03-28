@@ -16,6 +16,7 @@ namespace SalesWebMVC.Controllers
             _sellerService = sellerService;
             _departmentService = departmentService;
         }
+
         public async Task<IActionResult> Index()
         {
             var list = await _sellerService.FindAllAsync();
@@ -37,11 +38,11 @@ namespace SalesWebMVC.Controllers
         {
 /*            if (!ModelState.IsValid)
             {
+                await Console.Out.WriteLineAsync(seller.ToString());
                 var departments = await _departmentService.FindAllAsync();
                 var viewModel = new SellerFormViewModel { Departments = departments, Seller = seller };
                 return View(viewModel);
             }*/
-
             await _sellerService.InsertAsync(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -109,12 +110,12 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Seller seller)
         {
-            if (!ModelState.IsValid)
-            {
-                var departments = await _departmentService.FindAllAsync();
-                var viewModel = new SellerFormViewModel { Departments = departments, Seller = seller };
-                return View(viewModel);
-            }
+            /*            if (!ModelState.IsValid)
+                        {
+                            var departments = await _departmentService.FindAllAsync();
+                            var viewModel = new SellerFormViewModel { Departments = departments, Seller = seller };
+                            return View(viewModel);
+                        }*/
 
             if (id != seller.Id)
             {
